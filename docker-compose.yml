@@ -2,15 +2,9 @@ version: '3.9'
 
 services:
   backnd:
-    build:
-      context: .
-      args:
-        - DEV=true
-      dockerfile: Dockerfile
+    build:  .
     ports:
       - '8000:8000'
     volumes:
       - ./backnd:/backnd
-    command: >
-      sh -c "python manage.py runserver 0.0.0.0:8000"
-      
+    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]

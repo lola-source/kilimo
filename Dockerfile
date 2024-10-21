@@ -1,13 +1,9 @@
 FROM python:3.9-alpine3.13
 LABEL maintaine='lola-source'
 
-RUN apk add --no-cache \
-    bash \
-    busybox-static
-
 ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PATH="/py/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 COPY ./requirements.txt /tmp/requirements.txt
 COPY ./requirements.dev.txt /tmp/requirements.dev.txt
@@ -32,6 +28,4 @@ RUN python -m venv /py && \
 ENV PATH='/py/bin:$PATH'
 
 USER django-user
-
-SHELL ["/bin/bash", "-c"]
 
