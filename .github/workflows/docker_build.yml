@@ -34,7 +34,7 @@ jobs:
 
       - name: Run tests
         run: |
-          docker-compose run --rm backnd python manage.py test  
+          docker compose run --rm backnd python manage.py test --verbosity=2  
 
       - name: Print environment variables
         run: env
