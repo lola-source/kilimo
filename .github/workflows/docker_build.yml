@@ -3,7 +3,7 @@ name: Docker Build and Test
 on:
   push:
     branches:
-      - main
+      - main  
   pull_request:
 
 jobs:
@@ -23,7 +23,15 @@ jobs:
           sudo curl -L "https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
           sudo chmod +x /usr/local/bin/docker-compose
 
+      - name: Check Docker Compose version
+        run: |
+          docker-compose --version 
+
       - name: Build and run Docker Compose
         run: |
-          docker-compose up -d
-          docker-compose ps
+          docker-compose up -d  
+          docker-compose ps     
+
+      - name: Run tests
+        run: |
+          docker-compose run --rm backnd python manage.py test  
