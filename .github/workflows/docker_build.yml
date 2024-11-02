@@ -35,3 +35,11 @@ jobs:
       - name: Run tests
         run: |
           docker-compose run --rm backnd python manage.py test  
+
+      - name: Print environment variables
+        run: env
+
+      - name: List installed packages
+        run: |
+          docker --version
+          docker compose version
