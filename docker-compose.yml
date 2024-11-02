@@ -1,13 +1,12 @@
-version: '3.9'
-
 services:
   backnd:
-    build:  .
+    build: .
     ports:
       - '8000:8000'
     volumes:
       - ./backnd:/backnd
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
     environment:
       - DB_HOST=db
       - DB_NAME=devdb
