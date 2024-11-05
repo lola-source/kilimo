@@ -13,6 +13,13 @@ EXPOSE 8000
 
 ARG DEV=false
 
+RUN apk add --no-cache \
+    postgresql-client \
+    linux-headers \
+    build-base \
+    postgresql-dev \
+    musl-de
+
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
     apk add --update --no-cache postgresql-client && \
