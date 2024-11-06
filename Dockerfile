@@ -18,7 +18,6 @@ RUN apk add --no-cache \
     linux-headers \
     build-base \
     postgresql-dev \
-    musl-de
 
 RUN python -m venv /py && \
     /py/bin/pip install --upgrade pip && \
